@@ -1,14 +1,8 @@
-const fs = require("node:fs");
-const util = require("node:util");
-const print = (txt) => console.log(util.inspect(JSON.stringify(txt)));
+const processRawInput = (input) => {
+  const banks = input.split("\n");
 
-const data = fs.readFileSync("./input.txt", "utf8");
-
-const banks = data.split("\n");
-
-const batteries = banks.map((bank) =>
-  bank.split("").map((jolt) => parseInt(jolt))
-);
+  return banks.map((bank) => bank.split("").map((jolt) => parseInt(jolt)));
+};
 
 const findLargest = (arr) => {
   let largest = arr[0];
@@ -24,9 +18,7 @@ const findLargest = (arr) => {
   return [largest, position];
 };
 
-print(batteries);
-
-const largestTotals = batteries.map((inputArray) => {
+const largestTotals = (inputArray) => {
   const [largest, pos] = findLargest(inputArray);
 
   if (pos === inputArray.length - 1) {
@@ -39,7 +31,17 @@ const largestTotals = batteries.map((inputArray) => {
   const [secondLargest] = findLargest(remainingNumbers);
 
   return parseInt(`${largest}${secondLargest}`);
-});
+};
 
-print(largestTotals.reduce((sum, num) => sum + num, 0));
-// 357
+const run = (input) => {
+  const processedInput = processRawInput(input);
+
+  const answers = processedInput.map((inputArray) => {
+    const res = largestTotals(inputArray);
+    return res;
+  });
+
+  return answers.reduce((sum, numString) => sum + parseInt(numString), 0);
+};
+
+module.exports = { largestTotals, run };

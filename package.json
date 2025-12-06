@@ -1,0 +1,14 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "Advent of Code solutions",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "scaffold": "node scripts/scaffold.js",
+    "solve": "node solve.js"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
