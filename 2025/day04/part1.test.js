@@ -1,15 +1,37 @@
 const { solve } = require("./part1");
 
 const testCases = [
-  // TODO: Add test cases
-  // [input, expectedOutput]
+  [
+    `..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.`,
+    `..xx.xx@x.
+x@@.@.@.@@
+@@@@@.x.@@
+@.@@@@..@.
+x@.@@@@.@x
+.@@@@@@@.@
+.@.@.@.@@@
+x.@@@.@@@@
+.@@@@@@@@.
+x.x.@@@.x.`,
+    13,
+  ],
 ];
 
 describe("Part 1", () => {
-  testCases.forEach(([input, expectedOutput], idx) => {
+  testCases.forEach(([input, expectedOutput, expectedCount], idx) => {
     test(`case ${idx + 1}`, () => {
       const result = solve(input);
-      expect(result).toBe(expectedOutput);
+      expect(result.visual).toBe(expectedOutput);
+      expect(result.count).toBe(expectedCount);
     });
   });
 });

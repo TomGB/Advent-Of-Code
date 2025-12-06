@@ -6,8 +6,15 @@ const { run: part2 } = require("./part2");
 
 initFromArgs();
 
-const testInput = fs.readFileSync("./inputs/testinput.txt", "utf8");
-const input = fs.readFileSync("./inputs/input.txt", "utf8");
+const path = require("node:path");
+const testInput = fs.readFileSync(
+  path.join(__dirname, "inputs", "testinput.txt"),
+  "utf8"
+);
+const input = fs.readFileSync(
+  path.join(__dirname, "inputs", "input.txt"),
+  "utf8"
+);
 
 console.table(
   {
@@ -16,5 +23,5 @@ console.table(
     "Part 2 Test": timedRun(part2, testInput),
     "Part 2": timedRun(part2, input),
   },
-  ["Answer", "s", "ms", "μs"]
+  ["Answer", "Time", "s", "ms", "μs"]
 );
