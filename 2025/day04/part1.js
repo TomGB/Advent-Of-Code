@@ -39,7 +39,6 @@ const solve = (input) => {
 
 const run = (input) => {
   const processedInput = processRawInput(input);
-  debug("Processed Input:", processedInput);
   const result = solve(processedInput);
   return result;
 };

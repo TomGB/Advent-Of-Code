@@ -1,15 +1,26 @@
-const { solve } = require("./part2");
+const { solve } = require("./part1");
 
 const testCases = [
-  // TODO: Add test cases
-  // [input, expectedOutput]
+  [
+    `..@@.@@@@.
+@@@.@.@.@@
+@@@@@.@.@@
+@.@@@@..@.
+@@.@@@@.@@
+.@@@@@@@.@
+.@.@.@.@@@
+@.@@@.@@@@
+.@@@@@@@@.
+@.@.@@@.@.`,
+    43,
+  ],
 ];
 
-describe("Part 2", () => {
-  testCases.forEach(([input, expectedOutput], idx) => {
+describe("Part 1", () => {
+  testCases.forEach(([input, expectedCount], idx) => {
     test(`case ${idx + 1}`, () => {
       const result = solve(input);
-      expect(result).toBe(expectedOutput);
+      expect(result).toBe(expectedCount);
     });
   });
 });
