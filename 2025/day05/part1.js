@@ -1,15 +1,19 @@
 const { debug } = require("../../lib/debug");
 
 const processRawInput = (input) => {
-  // TODO: Process input and return structured data
-  const lines = input.split("\n");
-  return lines;
+  const [ranges, items] = input.split("\n\n");
+
+  return {
+    ranges: ranges.split("\n").map((range) => range.split("-").map(Number)),
+    items: items.split("\n").map(Number),
+  };
 };
 
-const solve = (input) => {
-  // TODO: Implement solution logic
-  debug("Input:", input);
-  return 0;
+const solve = ({ ranges, items }) => {
+  const count = items.filter((item) =>
+    ranges.some(([min, max]) => item >= min && item <= max)
+  ).length;
+  return count;
 };
 
 const run = (input) => {
