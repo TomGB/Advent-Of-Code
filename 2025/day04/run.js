@@ -23,5 +23,5 @@ console.table(
     "Part 2 Test": timedRun(part2, testInput),
     "Part 2": timedRun(part2, input),
   },
-  ["Answer", "Time", "s", "ms", "μs"]
+  ["Answer", "s", "ms", "μs"]
 );
