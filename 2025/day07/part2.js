@@ -10,7 +10,7 @@ const solve = (input) => {
 	return 0;
 };
 
-const run = (input) => {
+const run = (input) => {	
 	const processedInput = processRawInput(input);
 	const result = solve(processedInput);
 	return result;
