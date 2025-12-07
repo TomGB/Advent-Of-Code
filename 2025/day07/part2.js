@@ -1,5 +1,17 @@
 const { debug } = require("../../lib/debug");
 
+const cache = {};
+
+const caching = (input, location, depth) => {
+  const key = `${location},${depth}`;
+  if (key in cache) {
+    return cache[key];
+  }
+  const result = solve(input, location, depth);
+  cache[key] = result;
+  return result;
+};
+
 const processRawInput = (input) => {
   const lines = input
     .trim()
@@ -12,30 +24,25 @@ const processRawInput = (input) => {
   return lines;
 };
 
-const solve = (input) => {
-  let splitCount = 0;
-  for (let i = 0; i < input.length - 1; i++) {
-    const topLine = input[i];
-    const bottomLine = input[i + 1];
-
-    for (let j = 0; j < topLine.length; j++) {
-      if (topLine[j] === "S" && bottomLine[j] === "^") {
-        splitCount++;
-        bottomLine[j - 1] = "S";
-        bottomLine[j + 1] = "S";
-      } else if (topLine[j] === "S") {
-        bottomLine[j] = "S";
-      }
-    }
+const solve = (input, location, depth) => {
+  if (depth === input.length) {
+    return 1;
   }
-
-  debug(input.map((line) => line.join("")).join("\n"));
-  return splitCount;
+  if (input[depth][location] !== "^") {
+    return caching(input, location, depth + 1);
+  } else {
+    return (
+      caching(input, location - 1, depth + 1) +
+      caching(input, location + 1, depth + 1)
+    );
+  }
 };
 
 const run = (input) => {
   const processedInput = processRawInput(input);
-  const result = solve(processedInput);
+
+  const start = processedInput[0].findIndex((line) => line === "S");
+  const result = solve(processedInput, start, 1);
   return result;
 };
 

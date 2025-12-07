@@ -20,8 +20,8 @@ console.table(
   {
     "Part 1 Test": timedRun(part1, testInput),
     "Part 1": timedRun(part1, input),
-    // "Part 2 Test": timedRun(part2, testInput),
-    // "Part 2": timedRun(part2, input),
+    "Part 2 Test": timedRun(part2, testInput),
+    "Part 2": timedRun(part2, input),
   },
   ["Answer", "s", "ms", "μs"]
 );
