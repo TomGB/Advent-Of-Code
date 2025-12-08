@@ -13,8 +13,8 @@ console.table(
   {
     "Part 1 Test": timedRun(() => part1(testInput, 10)),
     "Part 1": timedRun(() => part1(input, 1000)),
-    // "Part 2 Test": timedRun(() => part2(testInput, 10)),
-    // "Part 2": timedRun(() => part2(input, 1000)),
+    "Part 2 Test": timedRun(() => part2(testInput)),
+    "Part 2": timedRun(() => part2(input)),
   },
   ["Answer", "s", "ms", "μs"]
 );
